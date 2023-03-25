@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    margin: 0 10%;
+}
+
+.search-input{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 0;
+    background-color: #e7e7e7;
+}
+
+.tags-container{
+    display: flex;
+    gap: 1rem;
+    margin-top: 20px;
+}
+.tags{
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+}
+.tag-ingredients {
+    background-color: #3282F7;
+
+}
+.tag-appareils {
+    background-color: #68d9a4;
+    
+}
+.tag-ustensiles {
+    background-color: #ed6454;
+    
+}
