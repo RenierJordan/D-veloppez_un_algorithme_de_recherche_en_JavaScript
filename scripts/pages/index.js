@@ -9,7 +9,6 @@ export async function getRecipes() {
 async function displayRecipes(data) {
 
     const recipesSection = document.getElementById("recipes-section");
-
     data.forEach((recipes) => {
         const recipesModel = recipesFactory(recipes);
         const recipesArticles = recipesModel.recipesArticles();
@@ -21,8 +20,18 @@ async function displayRecipes(data) {
 export function UpdateRecipes(data) {
     const recipesSection = document.getElementById("recipes-section");
     recipesSection.replaceChildren()
-    displayRecipes(data)
+    if(data.length > 0){
+        displayRecipes(data)
+    }
+    else {
+        const Erreur = document.createElement( 'p' );
+        Erreur.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.'
+        recipesSection.appendChild(Erreur)
+        
+    }
+    
 }
+    
 
 
 
