@@ -12,17 +12,45 @@
     </header>
 
     <main>
-        <input type="text" class="search-input" id="search" placeholder="Rechercher une recette" />
+        <div id="search">
+            <input type="text" class="search-input"  placeholder="Rechercher une recette" />
+            <img class="svg search-img" src="/assets/search-24px 1.svg"></img>
+        </div>
         
         <section class="tags-container">
-            <div class="tags tag-ingredients">Ingredients</div>
-            <div class="tags tag-appareils">Appareils</div>
-            <div class="tags tag-ustensiles">Ustensiles</div>
+            <div class="tags tag-ingredients">
+                <div class="inline">
+                    <input class="tag-input" type="text" placeholder="Ingredients">
+                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                </div>
+            </div>
+            <div class="tags tag-appareils">
+                <div class="inline">
+                    <input class="tag-input" type="text" placeholder="Appareils">
+                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                    
+                </div>
+            </div>
+            <div class="tags tag-ustensiles">
+                <div class="inline">
+                    <input class="tag-input" type="text" placeholder="Ustensiles">
+                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="recipes-section">
+
         </section>
     </main>
 
     <footer>
 
     </footer>
+    <script src="./scripts/factories/recipes.js"></script>
+    <script src="./scripts/utils/search.js"></script>
+    <script src="./scripts/utils/tags.js"></script>
+    <script src="./scripts/pages/index.js" type="module"></script>
 </body>
 </html>
