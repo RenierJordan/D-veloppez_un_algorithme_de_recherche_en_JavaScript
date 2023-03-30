@@ -18,6 +18,11 @@ async function displayRecipes(data) {
 
 }
 
+export function UpdateRecipes(data) {
+    const recipesSection = document.getElementById("recipes-section");
+    recipesSection.replaceChildren()
+    displayRecipes(data)
+}
 
 
 
