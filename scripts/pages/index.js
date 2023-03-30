@@ -1,5 +1,5 @@
 
-async function getRecipes() {
+export async function getRecipes() {
     const response = await fetch('./data/recipes.json');
     const jsonData = await response.json();
     
