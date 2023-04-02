@@ -14,8 +14,11 @@ function recipesFactory(data) {
         nom.textContent = name;
         nom.setAttribute("class","article-infos-nom")
 
+        const timesvg = document.createElement( 'img' );
+        timesvg.setAttribute("src","./assets/watch_later-24px 1.svg");
+        timesvg.setAttribute("class","svg time-img");
         const temps = document.createElement( 'p' );
-        temps.textContent = time + " min";
+        temps.textContent =time + " min";
         temps.setAttribute("class","article-infos-temps")
 
         const ingredientsList = document.createElement( 'ul' );
@@ -33,17 +36,33 @@ function recipesFactory(data) {
         desc.textContent = description;
         desc.setAttribute("class","article-infos-description")
 
+        const divtime = document.createElement( 'div' );
+        divtime.setAttribute("class","article-divtime")
+
+        const spacebtwn = document.createElement( 'div' );
+        spacebtwn.setAttribute("class","article-spacebtwn")
+
+        const scrollable = document.createElement( 'div' );
+        scrollable.setAttribute("class","article-scrollable")
+
+        divtime.appendChild(timesvg);
+        divtime.appendChild(temps);
+        spacebtwn.appendChild(nom);
+        spacebtwn.appendChild(divtime);
+        scrollable.appendChild(ingredientsList);
+        scrollable.appendChild(desc);
+        
+
         article.appendChild(bg);
         article.appendChild(infos);
-        infos.appendChild(nom);
-        infos.appendChild(temps);
-        infos.appendChild(ingredientsList);
-        infos.appendChild(desc);
+        infos.appendChild(spacebtwn);
+        infos.appendChild(scrollable);
+        
 
         return (article);
 
     }
 
 
-    return { name, id, time, recipesArticles}
+    return { name, id, time, ingredients, appliance, ustensils, recipesArticles}
 }

@@ -14,27 +14,27 @@
     <main>
         <div id="search">
             <input type="text" class="search-input"  placeholder="Rechercher une recette" />
-            <img class="svg search-img" src="/assets/search-24px 1.svg"></img>
+            <img class="svg search-img" src="./assets/search-24px 1.svg"></img>
         </div>
         
         <section class="tags-container">
-            <div class="tags tag-ingredients">
+            <div class="tags tag-ingredients" id="ingredients">
                 <div class="inline">
                     <input class="tag-input" type="text" placeholder="Ingredients">
-                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                    <img class="svg tag-img more" src="./assets/expand_more-24px 4.svg"></img>
                 </div>
             </div>
-            <div class="tags tag-appareils">
+            <div class="tags tag-appareils" id="appareils">
                 <div class="inline">
                     <input class="tag-input" type="text" placeholder="Appareils">
-                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                    <img class="svg tag-img more" src="./assets/expand_more-24px 4.svg"></img>
                     
                 </div>
             </div>
-            <div class="tags tag-ustensiles">
+            <div class="tags tag-ustensiles" id="ustensiles">
                 <div class="inline">
                     <input class="tag-input" type="text" placeholder="Ustensiles">
-                    <img class="svg tag-img more" src="/assets/expand_more-24px 4.svg"></img>
+                    <img class="svg tag-img more" src="./assets/expand_more-24px 4.svg"></img>
                     
                 </div>
             </div>
@@ -50,7 +50,8 @@
     </footer>
     <script src="./scripts/factories/recipes.js"></script>
     <script src="./scripts/utils/search.js" type="module"></script>
-    <script src="./scripts/utils/tags.js"></script>
+    <script src="./scripts/utils/tags.js" type="module"></script>
+    <script src="./scripts/utils/function.js" type="module"></script>
     <script src="./scripts/pages/index.js" type="module"></script>
 </body>
 </html>

@@ -1,19 +1,12 @@
 import { getRecipes, UpdateRecipes } from "../pages/index.js";
+import { arrayUnique } from "../utils/function.js";
 
 const searchInput = document.querySelector('.search-input');
 const getrecipes = await getRecipes();
 
-function arrayUnique(array) {
-    var a = array.concat();
-    for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-            if(a[i] === a[j])
-                a.splice(j--, 1);
-        }
-    }
+let LastSorted = getrecipes;
 
-    return a;
-}
+
 
 function SortRecipes(value){
     
@@ -21,21 +14,26 @@ function SortRecipes(value){
     let sortedbydesc = getrecipes.filter(recipes => recipes.description.toLowerCase().includes(value.toLowerCase()))
     let sortedbying = getrecipes.filter(recipes => recipes.ingredients.find(ingre => ingre.ingredient.toLowerCase().includes(value.toLowerCase())));
         
-    let sorted = arrayUnique((sortedbyname.concat(sortedbydesc)).concat(sortedbying))
-    return sorted;
+    LastSorted = arrayUnique((sortedbyname.concat(sortedbydesc)).concat(sortedbying))
+    return LastSorted;
 
 }
 
 function search(value) {
     
     if (value.length>2){
-        console.log(value);
+        let sorted = SortRecipes(value);
+        UpdateRecipes(sorted);
+    } 
+    if (value.length==0){
         let sorted = SortRecipes(value);
         UpdateRecipes(sorted);
     } 
     else console.log("Veuillez entrez au moins 3 caractères.")
 }
 
-
+export function getLastSorted() {
+    return LastSorted;
+}
 
 searchInput.addEventListener("change", ()=>search(searchInput.value));
