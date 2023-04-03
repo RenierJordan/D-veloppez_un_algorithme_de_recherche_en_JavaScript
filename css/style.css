@@ -28,6 +28,29 @@ ul, li {
     margin-left: -48px;
 }
 
+.Showtag{
+    display: none;
+    width: fit-content;
+    align-items: center;
+    gap: .25rem;
+    padding: .5rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    color: white;
+}
+.Showtag[data-set="ingredients"]{
+    background-color: #3282F7;
+}
+.Showtag[data-set="appliance"]{
+    background-color: #68d9a4;
+}
+.Showtag[data-set="ustensils"]{
+    background-color: #ed6454;
+}
+.close-img{
+    width: 20px;
+}
+
 .tags-container{
     display: flex;
     gap: 1rem;
@@ -129,6 +152,7 @@ ul, li {
 
 .article-divtime{
     display: flex;
+    align-items: center;
 }
 .article-divtime img{
     width: 24px;

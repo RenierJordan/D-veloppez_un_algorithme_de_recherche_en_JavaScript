@@ -9,14 +9,15 @@ let LastSorted = getrecipes;
 
 
 function SortRecipes(value){
-    
-    let sortedbyname = getrecipes.filter(recipes => recipes.name.toLowerCase().includes(value.toLowerCase()))
-    let sortedbydesc = getrecipes.filter(recipes => recipes.description.toLowerCase().includes(value.toLowerCase()))
-    let sortedbying = getrecipes.filter(recipes => recipes.ingredients.find(ingre => ingre.ingredient.toLowerCase().includes(value.toLowerCase())));
-        
-    LastSorted = arrayUnique((sortedbyname.concat(sortedbydesc)).concat(sortedbying))
-    return LastSorted;
 
+        let sortedbyname = getrecipes.filter(recipes => recipes.name.toLowerCase().includes(value.toLowerCase()))
+        let sortedbydesc = getrecipes.filter(recipes => recipes.description.toLowerCase().includes(value.toLowerCase()))
+        let sortedbying = getrecipes.filter(recipes => recipes.ingredients.find(ingre => ingre.ingredient.toLowerCase().includes(value.toLowerCase())));
+
+        LastSorted = arrayUnique((sortedbyname.concat(sortedbydesc)).concat(sortedbying))
+    
+    
+    return LastSorted;
 }
 
 function search(value) {
@@ -25,7 +26,7 @@ function search(value) {
         let sorted = SortRecipes(value);
         UpdateRecipes(sorted);
     } 
-    if (value.length==0){
+    else if (value.length==0){
         let sorted = SortRecipes(value);
         UpdateRecipes(sorted);
     } 
