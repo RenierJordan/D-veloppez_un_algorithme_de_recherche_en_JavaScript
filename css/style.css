@@ -30,25 +30,30 @@ ul, li {
 
 .Showtag{
     display: none;
+    
+}
+.Showtag div{
     width: fit-content;
     align-items: center;
     gap: .25rem;
     padding: .5rem;
     border-radius: 5px;
     margin-top: 1rem;
+    margin-right: .5rem;
     color: white;
 }
-.Showtag[data-set="ingredients"]{
+.Showtag div[data-set="ingredients"]{
     background-color: #3282F7;
 }
-.Showtag[data-set="appliance"]{
+.Showtag div[data-set="appliance"]{
     background-color: #68d9a4;
 }
-.Showtag[data-set="ustensils"]{
+.Showtag div[data-set="ustensils"]{
     background-color: #ed6454;
 }
 .close-img{
     width: 20px;
+    color: #ffffff;
 }
 
 .tags-container{
