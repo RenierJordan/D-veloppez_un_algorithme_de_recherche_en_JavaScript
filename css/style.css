@@ -85,8 +85,10 @@ ul, li {
     border: 0;
 }
 .tag-input::placeholder{
+    color: white;
     opacity: 100;
 }
+
 
 .tag-ingredients {
     background-color: #3282F7;
