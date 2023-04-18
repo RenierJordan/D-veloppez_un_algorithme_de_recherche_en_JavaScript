@@ -86,6 +86,7 @@ ul, li {
 }
 .tag-input::placeholder{
     opacity: 100;
+    color: white;
 }
 
 .tag-ingredients {
