@@ -1,4 +1,4 @@
-import { getRecipes, UpdateRecipes } from "../pages/index.js";
+import { UpdateRecipes } from "../pages/index.js";
 import { getLastSorted, FilterGlobal } from "../utils/search.js";
 import { arrayUnique } from "../utils/function.js";
 
@@ -10,13 +10,16 @@ export {tagsApplied}
 function GetTags(data, Options) {
   let tags = [];
   let ID = Options.getAttribute("id");
+  let input = document.getElementById(ID+"-input").value
   tags.push(ID);
   if (ID == "ingredients") {
     for (let i=0; i<data.length; i++){
       const recipesModel = recipesFactory(data[i]);
       const ingredients = recipesModel.ingredients;
       for(let j=0; j<ingredients.length;j++){
-        tags.push(ingredients[j].ingredient);
+        if(ingredients[j].ingredient.toLowerCase().includes(input.toLowerCase())){
+          tags.push(ingredients[j].ingredient);
+        }
       }
     }
     
@@ -24,7 +27,9 @@ function GetTags(data, Options) {
     for (let i=0; i<data.length; i++){
       const recipesModel = recipesFactory(data[i]);
       const appareils = recipesModel.appliance;
-      tags.push(appareils);
+      if (appareils.toLowerCase().includes(input.toLowerCase())){
+        tags.push(appareils);
+      }
     }
     
   } else {
@@ -32,7 +37,9 @@ function GetTags(data, Options) {
       const recipesModel = recipesFactory(data[i]);
       const ustensils = recipesModel.ustensils;
       for(let j=0; j<ustensils.length;j++){
-        tags.push(ustensils[j]);
+        if(ustensils[j].toLowerCase().includes(input.toLowerCase())){
+          tags.push(ustensils[j]);
+        }
       }
     }
   }
@@ -41,15 +48,12 @@ function GetTags(data, Options) {
   return tags;
 }
 
-function expand(tags) {
-  tags.setAttribute("data-set", "expand");
-  tags.firstElementChild.lastElementChild.setAttribute(
-    "src",
-    "./assets/expand_more-24px 5.svg"
-  );
-
+function displaytaglist(tags){
   let LastSorted = getLastSorted();
   let tagsList = GetTags(LastSorted, tags);
+  if (tags.lastElementChild.getAttribute("class")== "tagsDiv"){
+    tags.lastElementChild.remove();
+  }
 
   let tagsDiv = document.createElement("div");
   tagsDiv.setAttribute("class", "tagsDiv");
@@ -64,6 +68,15 @@ function expand(tags) {
   }
   tagsDiv.appendChild(ingredientsList);
   tags.appendChild(tagsDiv);
+}
+
+function expand(tags) {
+  tags.setAttribute("data-set", "expand");
+  tags.firstElementChild.lastElementChild.setAttribute(
+    "src",
+    "./assets/expand_more-24px 5.svg"
+  );
+  displaytaglist(tags)
 }
 
 function retract(tags) {
@@ -155,6 +168,8 @@ let tags = document.querySelectorAll(".tags");
 for (let i = 0; i < tags.length; i++) {
   tags[i].addEventListener("click", () => Modify(tags[i]));
   tags[i].addEventListener("blur", () => retract(tags[i]));
+
+  tags[i].childNodes[1].childNodes[1].addEventListener("input", () => displaytaglist(tags[i]));
 
   //Permet de fermet les dropdown de tags lorsque l'on clique en dehors
   document.addEventListener("click", (evt) => {

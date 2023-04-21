@@ -30,7 +30,7 @@ export function setLastSorted(value) {
     LastSorted= value;
 }
 
-searchInput.addEventListener("change", ()=>search(searchInput.value,tagsApplied));
+searchInput.addEventListener("input", ()=>search(searchInput.value,tagsApplied));
 
 
 export function FilterGlobal(value,tags){
