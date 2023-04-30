@@ -4,6 +4,7 @@ import { tagsApplied, SortByTag } from "../utils/tags.js";
 
 const searchInput = document.querySelector('.search-input');
 const getrecipes = await getRecipes();
+const errorMessage = document.querySelector('.search-error-message');
 
 let LastSorted = getrecipes;
 
@@ -15,12 +16,18 @@ export function search(value) {
     if (value.length>2){
         let sorted = FilterGlobal(value,tagsApplied);
         UpdateRecipes(sorted);
+        errorMessage.textContent= "";
+
     } 
     else if (value.length==0){
         let sorted = FilterGlobal(value,tagsApplied);
         UpdateRecipes(sorted);
+        errorMessage.textContent= "";
     } 
-    else console.log("Veuillez entrez au moins 3 caractères.")
+    else {
+        console.log("Veuillez entrez au moins 3 caractères.")
+        errorMessage.textContent= "Veuillez entrez au moins 3 caractères.";
+    } 
 }
 
 export function getLastSorted() {
