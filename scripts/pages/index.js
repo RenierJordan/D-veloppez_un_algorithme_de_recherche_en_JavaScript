@@ -16,18 +16,16 @@ async function displayRecipes(data) {
     
 
 }
-
+const Erreur = document.querySelector('.recipe-error-message');
 export function UpdateRecipes(data) {
     const recipesSection = document.getElementById("recipes-section");
     recipesSection.replaceChildren()
     if(data.length > 0){
         displayRecipes(data)
+        Erreur.innerHTML = '';
     }
     else {
-        const Erreur = document.createElement( 'p' );
-        Erreur.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.'
-        recipesSection.appendChild(Erreur)
-        
+        Erreur.innerHTML = 'Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.';
     }
     
 }
